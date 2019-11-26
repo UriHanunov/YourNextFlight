@@ -25,7 +25,7 @@ public class ManagerLogin extends AppCompatActivity {
         name = (EditText)findViewById(R.id.etUserName);
         password = (EditText)findViewById(R.id.etPassword);
         info = (TextView)findViewById(R.id.tvInfo);
-        login = (Button)findViewById(R.id.btnLogin);
+        login = (Button)findViewById(R.id.btSignUp);
 
         info.setText("number of attempts remaining: 5");
 

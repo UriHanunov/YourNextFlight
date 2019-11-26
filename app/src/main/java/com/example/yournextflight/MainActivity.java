@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         manager = (Button)findViewById(R.id.buManger);
         customer = (Button)findViewById(R.id.buCustomer);
 
-        manager.setOnClickListener(new View.OnClickListener()
+        manager.setOnClickListener(new View.OnClickListener() //go to manager activity
         {
             @Override
             public void onClick(View v)
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        customer.setOnClickListener(new View.OnClickListener()
+        customer.setOnClickListener(new View.OnClickListener() //go to customer activity
         {
             @Override
             public void onClick(View v)
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
-    
+
 }
