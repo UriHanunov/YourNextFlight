@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/flights"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,35 +12,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Next Flight"
-        android:textSize = "32dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <Button
         android:id="@+id/buManger"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="מנהל"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_button"
+        android:text="Admin Access"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:textSize="15sp"
+        android:typeface="normal"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yourNextFlight"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826" />
 
     <Button
         android:id="@+id/buCustomer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="לקוח"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_button"
+        android:text="LETS GO!"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buManger"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674" />
 </androidx.constraintlayout.widget.ConstraintLayout>
