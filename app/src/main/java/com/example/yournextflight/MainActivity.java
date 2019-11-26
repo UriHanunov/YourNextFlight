@@ -11,11 +11,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText name;
-    private EditText password;
-    private TextView info;
-    private Button login;
-    private int count = 5;
+    private TextView yourNextFlight;
+    private Button manager;
+    private Button customer;
 
 
 
@@ -24,39 +22,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name = (EditText)findViewById(R.id.etUserName);
-        password = (EditText)findViewById(R.id.etPassword);
-        info = (TextView)findViewById(R.id.tvInfo);
-        login = (Button)findViewById(R.id.btnLogin);
+        yourNextFlight = (TextView)findViewById(R.id.yourNextFlight);
+        manager = (Button)findViewById(R.id.buManger);
+        customer = (Button)findViewById(R.id.buCustomer);
 
-        info.setText("number of attempts remaining: 5");
-
-        login.setOnClickListener(new View.OnClickListener()
+        manager.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                validate(name.getText().toString(),password.getText().toString());
+                Intent intent = new Intent(MainActivity.this, ManagerLogin.class);
+                startActivity(intent);
+            }
+        });
+
+        customer.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MainActivity.this, CustomerLogin.class);
+                startActivity(intent);
             }
         });
 
     }
-
-    private void validate(String userName , String userPassword)
-    {
-        if(userName.equals("admin") && userPassword.equals("1234"))
-        {
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            startActivity(intent);
-        }
-        else
-        {
-            count--;
-            info.setText("number of attempts remaining: " + String.valueOf(count));
-            if(count == 0)
-            {
-                login.setEnabled(false);
-            }
-        }
-    }
+    
 }
