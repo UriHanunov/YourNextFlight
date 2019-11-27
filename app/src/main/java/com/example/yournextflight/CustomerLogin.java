@@ -11,20 +11,21 @@ import android.widget.TextView;
 
 public class CustomerLogin extends AppCompatActivity {
 
-    private EditText name;
+    //all the variables:
+    private EditText email;
     private EditText password;
     private TextView info;
     private Button login;
     private Button signUp;
-    private int count = 5;
+    private int count = 5; //number of tries to login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customerlogin);
 
-
-        name = (EditText)findViewById(R.id.etEmail);
+        //connect variables to their id in xml
+        email = (EditText)findViewById(R.id.etEmail);
         password = (EditText)findViewById(R.id.etPassword);
         info = (TextView)findViewById(R.id.tvInfo);
         login = (Button)findViewById(R.id.btLogin);
@@ -32,15 +33,17 @@ public class CustomerLogin extends AppCompatActivity {
 
         info.setText("number of attempts remaining: 5");
 
+        //when we click on login button - go to validate function
         login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                validate(name.getText().toString(),password.getText().toString());
+                validate(email.getText().toString(),password.getText().toString());
             }
         });
 
+        //when we click on signUp button - go to SignUp activity
         signUp.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -50,9 +53,9 @@ public class CustomerLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
+    ///need to change this !!! ////
     private void validate(String userName , String userPassword)
     {
         if(userName.equals("admin") && userPassword.equals("1234"))
