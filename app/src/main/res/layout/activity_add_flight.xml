@@ -29,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="97dp" />
+        tools:layout_editor_absoluteY="97dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextDest"
@@ -64,7 +65,8 @@
         android:hint="time"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="220dp" />
+        tools:layout_editor_absoluteY="220dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextDate"
@@ -74,5 +76,7 @@
         android:hint="date"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="286dp" />
+        tools:layout_editor_absoluteY="286dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         <activity android:name=".SignUp" />
         <activity android:name=".CustomerLogin" />
         <activity android:name=".ManagerLogin" />
-        <activity android:name=".ManagerFirstActivity" />
+        <activity android:name=".Manager_second_Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -33,6 +33,7 @@ public class AddFlight extends AppCompatActivity {
         dest = (EditText)findViewById(R.id.editTextDest);
         time = (EditText)findViewById(R.id.editTextTime);
         date = (EditText)findViewById(R.id.editTextDate);
+        Add = (Button)findViewById(R.id.buttonAdd);
 
         Add.setOnClickListener(new View.OnClickListener() //go to manager activity
         {
