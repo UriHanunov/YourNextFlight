@@ -22,7 +22,7 @@ public class ManagerLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_login);
 
-        name = (EditText)findViewById(R.id.etUserName);
+        name = (EditText)findViewById(R.id.etEmail);
         password = (EditText)findViewById(R.id.etPassword);
         info = (TextView)findViewById(R.id.tvInfo);
         login = (Button)findViewById(R.id.btSignUp);
