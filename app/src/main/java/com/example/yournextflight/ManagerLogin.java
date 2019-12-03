@@ -44,7 +44,7 @@ public class ManagerLogin extends AppCompatActivity {
     {
         if(userName.equals("admin") && userPassword.equals("1234"))
         {
-            Intent intent = new Intent(ManagerLogin.this, SecondActivity.class);
+            Intent intent = new Intent(ManagerLogin.this, ManagerFirstActivity.class);
             startActivity(intent);
         }
         else
