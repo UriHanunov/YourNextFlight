@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //connect variables to their id in xml
         yourNextFlight = (TextView)findViewById(R.id.yourNextFlight);
         manager = (Button)findViewById(R.id.buManger);
         customer = (Button)findViewById(R.id.buCustomer);
 
+        //when we click on manager button - go to ManagerLogin activity
         manager.setOnClickListener(new View.OnClickListener() //go to manager activity
         {
             @Override
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //when we click on customer button - go to CustomerLogin activity
         customer.setOnClickListener(new View.OnClickListener() //go to customer activity
         {
             @Override
