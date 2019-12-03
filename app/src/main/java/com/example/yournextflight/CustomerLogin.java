@@ -43,7 +43,7 @@ public class CustomerLogin extends AppCompatActivity {
 
         info.setText("number of attempts remaining: 5");
 
-        //when we click on login button - go to validate function
+        //when we click on login button - go to userLogin function
         login.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -99,19 +99,20 @@ public class CustomerLogin extends AppCompatActivity {
             return;
         }
 
+        //check if the email and the password is correct by firebase
         mAuth.signInWithEmailAndPassword(email,userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {
-                if(task.isSuccessful())
+                if(task.isSuccessful()) //if we found this user with the correct password
                 {
                     Intent intent = new Intent(CustomerLogin.this, CustomerTry.class);
                     startActivity(intent);
                 }
-                else
+                else //the password or email is not correct
                 {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage() , Toast.LENGTH_LONG).show();
-                    count--;
+                    count--; //minus 1 to tries
                     info.setText("number of attempts remaining: " + String.valueOf(count));
                     if(count == 0)
                     {
