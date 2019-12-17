@@ -106,7 +106,7 @@ public class CustomerLogin extends AppCompatActivity {
             {
                 if(task.isSuccessful()) //if we found this user with the correct password
                 {
-                    Intent intent = new Intent(CustomerLogin.this, CustomerTry.class);
+                    Intent intent = new Intent(CustomerLogin.this, CustomerMain.class);
                     startActivity(intent);
                 }
                 else //the password or email is not correct
