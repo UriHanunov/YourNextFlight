@@ -39,48 +39,15 @@ public class AddFlight extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private static final String TAG = "AddFlight";
     String  date;
-    ListView listViewFlight;
-
-    List<Flight> flightList;
 
     DatabaseReference DatabaseFlights;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        DatabaseFlights.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                flightList.clear();
-
-                for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
-                    Flight flight= flightSnapshot.getValue(Flight.class);
-
-                    flightList.add(flight);
-                }
-
-                FlightList adapter = new FlightList(AddFlight.this, flightList);
-                listViewFlight.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flight);
         mDisplayDate = (TextView) findViewById(R.id.textViewSelectDate);
-
-        listViewFlight= (ListView) findViewById(R.id.listViewFlight);
-
-        flightList= new ArrayList<>();
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +83,6 @@ public class AddFlight extends AppCompatActivity {
         source = (EditText)findViewById(R.id.editTextSource);
         dest = (EditText)findViewById(R.id.editTextDest);
         time = (EditText)findViewById(R.id.editTextTime);
-//        date = (EditText)findViewById(R.id.editTextDate);
         price = (EditText)findViewById(R.id.editTextPrice);
         Add = (Button)findViewById(R.id.buttonAdd);
 
