@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManagerSearch"></activity>
-        <activity android:name=".AllFlights" />
+        <activity android:name=".CustomerMain"></activity>
         <activity android:name=".CustomerTry" />
         <activity android:name=".AddFlight" />
         <activity android:name=".SignUp" />
