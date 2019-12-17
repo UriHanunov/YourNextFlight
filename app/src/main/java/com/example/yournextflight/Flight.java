@@ -1,6 +1,6 @@
 package com.example.yournextflight;
 
-public class Flight {
+class Flight {
 
     String FlightId;
     String source;
