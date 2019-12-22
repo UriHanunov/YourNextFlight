@@ -21,6 +21,6 @@ public class CustomerMain extends AppCompatActivity {
         setContentView(R.layout.activity_customer_main);
 
         info = (TextView)findViewById(R.id.tv2);
-        String fName = "";
+        String fName = "aaa";
     }
 }
