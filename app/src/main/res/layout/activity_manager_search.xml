@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ManagerSearch">
 
-    <ListView
-        android:id="@+id/listViewSearch"
-        android:layout_width="455dp"
-        android:layout_height="754dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-3dp" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="240dp"
+        tools:layout_editor_absoluteY="372dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
