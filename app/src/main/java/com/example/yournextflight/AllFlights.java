@@ -1,37 +1,22 @@
 package com.example.yournextflight;
 
-        import android.app.DatePickerDialog;
-        import android.graphics.Color;
-        import android.graphics.drawable.ColorDrawable;
-        import android.os.Bundle;
-        import android.text.TextUtils;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.DatePicker;
-        import android.widget.EditText;
-        import android.widget.ListView;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ListView;
 
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.util.ArrayList;
-        import java.util.Calendar;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllFlights extends AppCompatActivity {
 
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private static final String TAG = "AddFlight";
-    String  date;
     ListView listViewFlight;
 
     List<Flight> flightList;
@@ -50,7 +35,6 @@ public class AllFlights extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-
                     flightList.add(flight);
                 }
 

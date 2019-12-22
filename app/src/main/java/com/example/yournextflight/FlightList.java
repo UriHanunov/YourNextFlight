@@ -36,7 +36,6 @@ public class FlightList extends ArrayAdapter<Flight> {
         TextView TextViewDestination =(TextView) listViewItem.findViewById(R.id.textViewDestination);
         TextView TextViewSource =(TextView) listViewItem.findViewById(R.id.textViewSource);
         TextView TextViewDate =(TextView) listViewItem.findViewById(R.id.textViewDate);
-        TextView TextViewTime =(TextView) listViewItem.findViewById(R.id.textViewTime);
 //        flightList.get(2);
         // :D
         // idk ze oved aval
@@ -45,7 +44,6 @@ public class FlightList extends ArrayAdapter<Flight> {
         TextViewDestination.setText(flight.getDestination());
         TextViewSource.setText(flight.getSource());
         TextViewDate.setText(flight.getDate());
-        TextViewTime.setText(flight.getTime());
 
         return listViewItem;
 
