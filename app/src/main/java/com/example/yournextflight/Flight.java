@@ -18,7 +18,7 @@ class Flight {
         FlightId = flightId;
         this.destination = destination;
         this.source = source;
-        Time = time;
+        this.Time = time;
         this.date = date;
         this.price=price;
     }

@@ -3,7 +3,9 @@ package com.example.yournextflight;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllFlights extends AppCompatActivity {
+public class search extends AppCompatActivity {
 
     ListView listViewFlight;
 
@@ -35,11 +37,14 @@ public class AllFlights extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-                    if(flight.getDestination().equals("berlin"))
-                    flightList.add(flight);
+                    Intent  i = getIntent();
+                    String dest = i.getExtras().getString("dest");
+                    Log.e("log", dest+" "+flight.getDestination());
+                    if(flight.getDestination().equals(dest))
+                        flightList.add(flight);
                 }
 
-                FlightList adapter = new FlightList(AllFlights.this, flightList);
+                FlightList adapter = new FlightList(search.this, flightList);
                 listViewFlight.setAdapter(adapter);
             }
 
@@ -53,7 +58,7 @@ public class AllFlights extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_flights);
+        setContentView(R.layout.activity_search);
 
         listViewFlight= (ListView) findViewById(R.id.listViewAllFlights);
 
