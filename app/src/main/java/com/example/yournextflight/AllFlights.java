@@ -35,7 +35,6 @@ public class AllFlights extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-                    if(flight.getDestination().equals("berlin"))
                     flightList.add(flight);
                 }
 
