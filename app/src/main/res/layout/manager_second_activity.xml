@@ -9,9 +9,13 @@
 
     <Button
         android:id="@+id/buttonAddFlight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="111dp"
+        android:layout_height="45dp"
+        android:background="@drawable/custom_button"
         android:text="add flight"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -22,11 +26,15 @@
 
     <Button
         android:id="@+id/buttonAllFlights"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="109dp"
+        android:layout_height="45dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
+        android:background="@drawable/custom_button"
         android:text="All flights"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonAddFlight"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,7 +43,7 @@
         app:layout_constraintVertical_bias="0.149" />
 
     <EditText
-        android:id="@+id/editTextDestination"
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="312dp"
@@ -49,16 +57,20 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_width="119dp"
+        android:layout_height="42dp"
         android:layout_marginTop="44dp"
+        android:background="@drawable/custom_button"
         android:text="@android:string/search_go"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDestination"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
         app:layout_constraintVertical_bias="0.005"
         tools:ignore="MissingConstraints" />
 
@@ -68,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Hello maneger"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDestination"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
