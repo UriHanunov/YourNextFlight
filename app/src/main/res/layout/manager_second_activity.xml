@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.149" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextDestination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="312dp"
@@ -57,7 +57,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonSearch"
         android:layout_width="119dp"
         android:layout_height="42dp"
         android:layout_marginTop="44dp"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDestination"
         app:layout_constraintVertical_bias="0.005"
         tools:ignore="MissingConstraints" />
 
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Hello maneger"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDestination"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
