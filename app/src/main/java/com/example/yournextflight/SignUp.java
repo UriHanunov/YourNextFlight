@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity {
 
@@ -99,7 +98,7 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                         {
-                            Intent intent = new Intent(SignUp.this, CustomerTry.class);
+                            Intent intent = new Intent(SignUp.this, CustomerDetails.class);
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(),"User registered successfull", Toast.LENGTH_SHORT).show();
                         }

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AllFlights"></activity>
         <activity android:name=".CustomerMain" />
-        <activity android:name=".CustomerTry" />
+        <activity android:name=".CustomerDetails" />
         <activity android:name=".AddFlight" />
         <activity android:name=".SignUp" />
         <activity android:name=".CustomerLogin" />

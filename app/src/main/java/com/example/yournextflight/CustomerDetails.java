@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CustomerTry extends AppCompatActivity {
+public class CustomerDetails extends AppCompatActivity {
 
     private TextView info;
     private EditText firstName;
@@ -31,7 +31,7 @@ public class CustomerTry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_try);
+        setContentView(R.layout.activity_customer_details);
 
         //connect variables to their id in xml
         info = (TextView)findViewById(R.id.tv2);
@@ -71,7 +71,7 @@ public class CustomerTry extends AppCompatActivity {
             User user= new User(id, first, last, city2, address2, phone);
             DatabaseUsers.child(temp).setValue(user);
             Toast.makeText(this, "personal details added", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(CustomerTry.this, CustomerMain.class);
+            Intent intent = new Intent(CustomerDetails.this, CustomerMain.class);
             startActivity(intent);
         }
         else {
