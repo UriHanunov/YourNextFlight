@@ -107,9 +107,15 @@ public class AddFlight extends AppCompatActivity {
 
             String id = DatabaseFlights.push().getKey();
 
+            Log.e("log", dest+" "+DatabaseFlights.push().getKey());
+
             Flight flight= new Flight(id, so, des, ti, da, pr);
 
+            Log.e("log","cjsbkbcs"+ flight.getFlightId());
+
             DatabaseFlights.child(id).setValue(flight);
+
+//            Log.e("log","55555"+ flight.getFlightId());
 
             Toast.makeText(this, "flight added", Toast.LENGTH_LONG).show();
         }
