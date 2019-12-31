@@ -79,10 +79,34 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSerach"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.075" />
+
+    <TextView
+        android:id="@+id/textViewDate1"
+        android:layout_width="211dp"
+        android:layout_height="42dp"
+        android:text="Select first date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDest2"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <TextView
+        android:id="@+id/textViewDate2"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:text="Select second date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate1"
+        app:layout_constraintVertical_bias="0.043" />
 
     <EditText
         android:id="@+id/editTextDest2"
@@ -93,34 +117,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSorce2"
         app:layout_constraintVertical_bias="0.04" />
-
-    <TextView
-        android:id="@+id/textViewDate1"
-        android:layout_width="211dp"
-        android:layout_height="42dp"
-        android:text="Select first date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDest2"
-        app:layout_constraintVertical_bias="0.064" />
-
-    <TextView
-        android:id="@+id/textViewDate2"
-        android:layout_width="210dp"
-        android:layout_height="40dp"
-        android:text="Select second date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDate1"
-        app:layout_constraintVertical_bias="0.047" />
 
     <Button
         android:id="@+id/buttonSearchAll"

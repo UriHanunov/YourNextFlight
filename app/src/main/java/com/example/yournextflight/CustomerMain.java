@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -59,7 +61,7 @@ public class CustomerMain extends AppCompatActivity {
                         CustomerMain.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
-                        year,month,day);
+                        year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
@@ -88,7 +90,7 @@ public class CustomerMain extends AppCompatActivity {
                         CustomerMain.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener2,
-                        year,month,day);
+                        year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
@@ -106,52 +108,55 @@ public class CustomerMain extends AppCompatActivity {
         };
 
 
-
         DatabaseFlights = FirebaseDatabase.getInstance().getReference("flights");
-        hello = (TextView)findViewById(R.id.textViewHello); //hello
-        name = (TextView)findViewById(R.id.textViewName); //save the name
+        hello = (TextView) findViewById(R.id.textViewHello); //hello
+        name = (TextView) findViewById(R.id.textViewName); //save the name
         myFlights = (Button) findViewById(R.id.buttonMyFlights);
-        lastChance = (Button)findViewById(R.id.buttonLastChance);
-        search = (TextView)findViewById(R.id.textViewSerach);
-        source = (EditText)findViewById(R.id.editTextSorce2);
-        dest = (EditText)findViewById(R.id.editTextDest2);
-        searchAll = (Button)findViewById(R.id.buttonSearchAll);
+        lastChance = (Button) findViewById(R.id.buttonLastChance);
+        search = (TextView) findViewById(R.id.textViewSerach);
+        source = (EditText) findViewById(R.id.editTextSorce2);
+        dest = (EditText) findViewById(R.id.editTextDest2);
+        searchAll = (Button) findViewById(R.id.buttonSearchAll);
 
 
-
-        myFlights.setOnClickListener(new View.OnClickListener()
-        {
+        myFlights.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent(CustomerMain.this, CustomerMyFlights.class);
                 startActivity(intent);
             }
         });
 
 
-        lastChance.setOnClickListener(new View.OnClickListener()
-        {
+        lastChance.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent(CustomerMain.this, CustomerLastChance.class);
                 startActivity(intent);
             }
         });
 
 
-        searchAll.setOnClickListener(new View.OnClickListener()
-        {
-        @Override
-        public void onClick(View v)
-        {
-            Intent intent = new Intent(CustomerMain.this, CustomerLastChance.class);
-            startActivity(intent);
-        }
+        searchAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFlights();
+                Intent intent = new Intent(CustomerMain.this, CustomerResultSearching.class);
+                startActivity(intent);
+            }
         });
-}
+    }
 
+    private void searchFlights()
+    {
+        String so= source.getText().toString().trim();
+        String des= dest.getText().toString().trim();
+        String ti= time.getText().toString().trim();
+        String da= date;
+        int pr= Integer.parseInt(price.getText().toString());
+
+        if(!TextUtils.isEmpty(so)||!TextUtils.isEmpty(des)||TextUtils.isEmpty(ti)||!TextUtils.isEmpty(da)){
+    }
 
 }
 
