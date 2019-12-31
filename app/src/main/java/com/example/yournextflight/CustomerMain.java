@@ -141,23 +141,26 @@ public class CustomerMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 searchFlights();
-                Intent intent = new Intent(CustomerMain.this, CustomerResultSearching.class);
-                startActivity(intent);
             }
         });
     }
 
-    private void searchFlights()
-    {
-        String so= source.getText().toString().trim();
-        String des= dest.getText().toString().trim();
-        String ti= time.getText().toString().trim();
-        String da= date;
-        int pr= Integer.parseInt(price.getText().toString());
+    private void searchFlights() {
+        String so = source.getText().toString().trim();
+        String des = dest.getText().toString().trim();
+        String da = date;
+        String da2 = date2;
 
-        if(!TextUtils.isEmpty(so)||!TextUtils.isEmpty(des)||TextUtils.isEmpty(ti)||!TextUtils.isEmpty(da)){
+        if (!TextUtils.isEmpty(so) || !TextUtils.isEmpty(des) || TextUtils.isEmpty(da) || !TextUtils.isEmpty(da2)) {
+            Intent intent = new Intent(CustomerMain.this, CustomerResultSearching.class);
+            intent.putExtra("source",so);
+            intent.putExtra("dest",des);
+            intent.putExtra("date 1",da);
+            intent.putExtra("date 2",da2);
+            startActivity(intent);
+        }
+
     }
-
 }
 
 
