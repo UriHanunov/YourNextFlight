@@ -98,7 +98,7 @@ public class CustomerOrders extends AppCompatActivity {
 
         orderFlight order = new orderFlight (ID, userId, orderId);
 
-        DatabaseFlights.child(orderId).setValue(order);
+        DatabaseOrders.child(orderId).setValue(order);
 
     }
 
