@@ -67,9 +67,9 @@ public class CustomerDetails extends AppCompatActivity {
         if(!TextUtils.isEmpty(first)&&!TextUtils.isEmpty(last)&&!TextUtils.isEmpty(city2)&&!TextUtils.isEmpty(address2)&&!TextUtils.isEmpty(phone))
         {
             String id = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-            String temp = DatabaseUsers.push().getKey();
-            User user= new User(id, first, last, city2, address2, phone);
-            DatabaseUsers.child(temp).setValue(user);
+//            String temp = DatabaseUsers.push().getKey();
+            User user = new User(id, first, last, city2, address2, phone);
+            DatabaseUsers.child(id).setValue(user);
             Toast.makeText(this, "personal details added", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(CustomerDetails.this, CustomerMain.class);
             startActivity(intent);
