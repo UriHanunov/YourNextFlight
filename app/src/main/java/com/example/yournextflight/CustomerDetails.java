@@ -34,7 +34,7 @@ public class CustomerDetails extends AppCompatActivity {
         setContentView(R.layout.activity_customer_details);
 
         //connect variables to their id in xml
-        info = (TextView)findViewById(R.id.tv2);
+        info = (TextView)findViewById(R.id.textViewHello);
         firstName = (EditText)findViewById(R.id.etFName);
         lastName = (EditText)findViewById(R.id.etlName);
         city = (EditText)findViewById(R.id.etCity);
