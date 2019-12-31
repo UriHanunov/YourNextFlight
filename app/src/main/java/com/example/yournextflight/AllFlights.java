@@ -20,7 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AllFlights extends AppCompatActivity {
@@ -43,9 +46,9 @@ public class AllFlights extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-//                    Log.e("log","cjsbkbcs"+ flight.getFlightId());
 
-                    flightList.add(flight);
+                        flightList.add(flight);
+
                 }
 
                 FlightList adapter = new FlightList(AllFlights.this, flightList);
@@ -79,8 +82,6 @@ public class AllFlights extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int NewPrice = Integer.parseInt(editTextPrice.getText().toString().trim());
-
-//                Log.e("log", );
 
                 updatePrice(FlightId, source,destination, Time,date,NewPrice);
 

@@ -41,8 +41,8 @@ public class FlightList extends ArrayAdapter<Flight> {
 
         Flight flight = flightList.get(position);
 
-        TextViewDestination.setText(flight.getDestination());
-        TextViewSource.setText(flight.getSource());
+        TextViewDestination.setText("To: " + flight.getDestination());
+        TextViewSource.setText("From: " +flight.getSource());
         TextViewDate.setText(flight.getDate());
         TextViewPrice.setText(Integer.toString(flight.getprice()));
 
