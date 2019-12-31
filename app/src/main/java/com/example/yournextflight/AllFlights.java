@@ -46,24 +46,8 @@ public class AllFlights extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-//                    Log.e("log","cjsbkbcs"+ flight.getFlightId());
 
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    String dateInString = flight.getDate();
-
-                    Date fightDate = null;
-                    try {
-                        fightDate = formatter.parse(dateInString);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    Date today = new Date(System.currentTimeMillis());
-                    Date newdate = new Date(System.currentTimeMillis());
-                    newdate.setMonth(newdate.getMonth()+1);
-
-                    if(fightDate.after(today) && fightDate.before(newdate))
-                    flightList.add(flight);
+                        flightList.add(flight);
 
                 }
 
@@ -98,8 +82,6 @@ public class AllFlights extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int NewPrice = Integer.parseInt(editTextPrice.getText().toString().trim());
-
-//                Log.e("log", );
 
                 updatePrice(FlightId, source,destination, Time,date,NewPrice);
 
