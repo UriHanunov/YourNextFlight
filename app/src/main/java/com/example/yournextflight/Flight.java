@@ -1,11 +1,13 @@
 package com.example.yournextflight;
 
+import java.util.Date;
+
 class Flight {
 
-    String FlightId;
+    String flightId;
     String source;
     String destination;
-    String Time;
+    String time;
     String date;
     int price;
     int places=150;
@@ -15,16 +17,16 @@ class Flight {
     }
 
     public Flight(String flightId, String source, String destination, String time, String date, int price) {
-        FlightId = flightId;
+        this.flightId = flightId;
         this.destination = destination;
         this.source = source;
-        this.Time = time;
+        this.time = time;
         this.date = date;
         this.price=price;
     }
 
     public String getFlightId() {
-        return FlightId;
+        return flightId;
     }
 
     public int getprice() {
@@ -40,7 +42,7 @@ class Flight {
     }
 
     public String getTime() {
-        return Time;
+        return time;
     }
 
     public String getDate() {
