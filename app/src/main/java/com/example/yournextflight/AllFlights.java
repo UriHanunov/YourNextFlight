@@ -20,7 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AllFlights extends AppCompatActivity {
@@ -45,7 +48,23 @@ public class AllFlights extends AppCompatActivity {
                     Flight flight= flightSnapshot.getValue(Flight.class);
 //                    Log.e("log","cjsbkbcs"+ flight.getFlightId());
 
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String dateInString = flight.getDate();
+
+                    Date fightDate = null;
+                    try {
+                        fightDate = formatter.parse(dateInString);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    Date today = new Date(System.currentTimeMillis());
+                    Date newdate = new Date(System.currentTimeMillis());
+                    newdate.setMonth(newdate.getMonth()+1);
+
+                    if(fightDate.after(today) && fightDate.before(newdate))
                     flightList.add(flight);
+
                 }
 
                 FlightList adapter = new FlightList(AllFlights.this, flightList);
