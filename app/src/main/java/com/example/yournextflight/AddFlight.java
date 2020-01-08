@@ -102,6 +102,7 @@ public class AddFlight extends AppCompatActivity {
         String ti= time.getText().toString().trim();
         String da= date;
         int pr= Integer.parseInt(price.getText().toString());
+        int place=350;
 
         if(!TextUtils.isEmpty(so)||!TextUtils.isEmpty(des)||TextUtils.isEmpty(ti)||!TextUtils.isEmpty(da)){
 
@@ -109,7 +110,7 @@ public class AddFlight extends AppCompatActivity {
 
             Log.e("log", dest+" "+DatabaseFlights.push().getKey());
 
-            Flight flight= new Flight(id, so, des, ti, da, pr);
+            Flight flight= new Flight(id, so, des, ti, da, pr, place);
 
             Log.e("log","cjsbkbcs"+ flight.getFlightId());
 

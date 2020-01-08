@@ -6,6 +6,9 @@ public class orderFlight {
     String flightId;
     String userId;
 
+    public orderFlight() {
+    }
+
     public orderFlight(String flightId, String userId, String orderId) {
         this.flightId = flightId;
         this.userId = userId;

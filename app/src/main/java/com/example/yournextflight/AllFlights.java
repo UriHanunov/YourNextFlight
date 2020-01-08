@@ -62,7 +62,7 @@ public class AllFlights extends AppCompatActivity {
         });
     }
 
-    private void showUpdateDialog( final String FlightId,  final String source, final String destination,  final String Time,  final String date, final int price) {
+    private void showUpdateDialog( final String FlightId,  final String source, final String destination,  final String Time,  final String date, final int price, final int places) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = getLayoutInflater();
@@ -70,8 +70,7 @@ public class AllFlights extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.update_dialog, null);
 
         dialogBuilder.setView(dialogView);
-
-        dialogBuilder.setTitle("Updating Price" + destination);
+        
         final AlertDialog alertDialog= dialogBuilder.create();
         alertDialog.show();
 
@@ -83,7 +82,7 @@ public class AllFlights extends AppCompatActivity {
             public void onClick(View v) {
                 int NewPrice = Integer.parseInt(editTextPrice.getText().toString().trim());
 
-                updatePrice(FlightId, source,destination, Time,date,NewPrice);
+                updatePrice(FlightId, source,destination, Time,date,NewPrice, places);
 
                 alertDialog.dismiss();
             }
@@ -92,11 +91,11 @@ public class AllFlights extends AppCompatActivity {
 
     }
 
-    private boolean updatePrice (String FlightId, String source, String destination, String Time, String date, int price){
+    private boolean updatePrice (String FlightId, String source, String destination, String Time, String date, int price, int places){
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("flights").child(FlightId);
 
-        Flight flight = new Flight (FlightId, source,  destination, Time, date, price);
+        Flight flight = new Flight (FlightId, source,  destination, Time, date, price,places);
 
         databaseReference.setValue(flight);
 
@@ -117,15 +116,15 @@ public class AllFlights extends AppCompatActivity {
         DatabaseFlights = FirebaseDatabase.getInstance().getReference("flights");
 
       listViewFlight.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-          @Override
-          public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
 
-              Flight flight = flightList.get(i);
+                Flight flight = flightList.get(i);
 
-              showUpdateDialog(flight.getFlightId(), flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice());
-              return false;
-          }
-      });
+                showUpdateDialog(flight.getFlightId(), flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice(), flight.getplaces());
+                return false;
+            }
+        });
 
     }
 

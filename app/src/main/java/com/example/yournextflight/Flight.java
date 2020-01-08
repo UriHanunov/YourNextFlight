@@ -10,19 +10,20 @@ class Flight {
     String time;
     String date;
     int price;
-    int places=150;
+    int places;
 
     public Flight(){
 
     }
 
-    public Flight(String flightId, String source, String destination, String time, String date, int price) {
+    public Flight(String flightId, String source, String destination, String time, String date, int price, int place) {
         this.flightId = flightId;
         this.destination = destination;
         this.source = source;
         this.time = time;
         this.date = date;
         this.price=price;
+        this.places=place;
     }
 
     public String getFlightId() {
@@ -48,4 +49,18 @@ class Flight {
     public String getDate() {
         return date;
     }
+
+    public int getplaces() {
+        return places;
+    }
+
+    public void setplaces() {
+         places--;
+    }
+
+    public void setplacesPlus() {
+         places++;
+    }
+
+
 }

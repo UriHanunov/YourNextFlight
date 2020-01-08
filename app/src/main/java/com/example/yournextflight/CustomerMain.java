@@ -136,6 +136,14 @@ public class CustomerMain extends AppCompatActivity {
             }
         });
 
+        myFlights.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerMain.this, MyFlights.class);
+                startActivity(intent);
+            }
+        });
+
 
         searchAll.setOnClickListener(new View.OnClickListener() {
             @Override

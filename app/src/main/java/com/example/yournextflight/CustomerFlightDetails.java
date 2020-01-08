@@ -1,16 +1,13 @@
 package com.example.yournextflight;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class CustomerOrders extends AppCompatActivity {
+public class CustomerFlightDetails extends AppCompatActivity {
 
     private TextView title;
     private TextView from;
@@ -29,8 +26,9 @@ public class CustomerOrders extends AppCompatActivity {
     private TextView date;
     private TextView time;
     private TextView price;
-    private Button order;
+    private Button Cancel;
     String ID;
+    String orderID;
     Flight flight;
 
     DatabaseReference DatabaseFlights;
@@ -73,79 +71,75 @@ public class CustomerOrders extends AppCompatActivity {
 
             }
         });
+
+        DatabaseOrders.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot flightSnapshot : dataSnapshot.getChildren()) {
+                    orderFlight order = flightSnapshot.getValue(orderFlight.class);
+                    Intent i = getIntent();
+                    ID = i.getExtras().getString("flightId");
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+                    Log.e("log", ID);
+                    Log.e("log", userId);
+                    if (order.getFlightId().equals(ID) && order.getUserId().equals(userId)) {
+                         orderID= order.getOrderId();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_orders);
+        setContentView(R.layout.activity_customer_flight_details);
 
-        order = (Button) findViewById(R.id.buttonOrder);
+        Cancel= (Button) findViewById(R.id.buttonCancel);
 
         DatabaseFlights = FirebaseDatabase.getInstance().getReference("flights");
         DatabaseOrders = FirebaseDatabase.getInstance().getReference("Orders");
 
-        order.setOnClickListener(new View.OnClickListener() //go to manager activity
+        Cancel.setOnClickListener(new View.OnClickListener() //go to manager activity
         {
             @Override
             public void onClick(View v) {
-                orderFlight();
+                cancelFlight();
             }
         });
+
     }
 
-    private void orderFlight() {
+    private void cancelFlight() {
 
-        if (flight.getplaces() > 0) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("flights").child(ID);
 
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-            String orderId = DatabaseOrders.push().getKey();
+        flight.setplacesPlus();
 
-            orderFlight order = new orderFlight(ID, userId, orderId);
+        Flight newFlight = new Flight(ID, flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice(), flight.getplaces());
 
-            DatabaseOrders.child(orderId).setValue(order);
+        databaseReference.setValue(newFlight);
 
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("flights").child(ID);
+        DatabaseOrders.child(orderID).orderByKey().equalTo(orderID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataSnapshot.getRef().removeValue();
+            }
 
-            flight.setplaces();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            Flight newFlight = new Flight(ID, flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice(), flight.getplaces());
+            }
 
-            databaseReference.setValue(newFlight);
+        });
 
-            Intent intent = new Intent(CustomerOrders.this, CustomerMain.class);
-            startActivity(intent);
-
-            Toast.makeText(this, "flight ordered, check my flights for more details", Toast.LENGTH_LONG).show();
-
-        } else {
-            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-
-            LayoutInflater inflater = getLayoutInflater();
-
-            final View dialogView = inflater.inflate(R.layout.no_place_dialog, null);
-
-            dialogBuilder.setView(dialogView);
-
-            final AlertDialog alertDialog = dialogBuilder.create();
-            alertDialog.show();
-
-            final Button buttonReturn = (Button) dialogView.findViewById(R.id.buttonReturn);
-
-            buttonReturn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(CustomerOrders.this, CustomerMain.class);
-                    alertDialog.dismiss();
-                    startActivity(intent);
-                }
-            });
-
-
-        }
-
+        Toast.makeText(this, "flight canceled, check my flights for more details", Toast.LENGTH_LONG).show();
     }
 }
-
-
-
