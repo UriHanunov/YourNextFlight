@@ -18,11 +18,13 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .withFullScreen()
                 .withTargetActivity(MainActivity.class)
                 .withSplashTimeOut(1500)
-                .withBackgroundColor(Color.parseColor("#1a1b29"))
-                .withBeforeLogoText("Your Next Flight")
-                .withLogo(R.mipmap.ic_launcher_round);
+                .withBackgroundResource(R.drawable.flights)
+//                .withBackgroundColor(R.drawable.flights)
+                .withBeforeLogoText("Your Next Flight");
+//                .withLogo(R.drawable.flights);
 
         config.getBeforeLogoTextView().setTextColor(Color.BLACK);
+        config.getBeforeLogoTextView().setTextSize(32);
 
         View easySplashScreen = config.create();
         setContentView(easySplashScreen);
