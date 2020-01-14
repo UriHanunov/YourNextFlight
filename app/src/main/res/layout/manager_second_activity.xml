@@ -46,12 +46,12 @@
         android:id="@+id/editTextDestination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="288dp"
         android:ems="10"
         android:hint="Destination"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -60,7 +60,6 @@
         android:id="@+id/buttonSearch"
         android:layout_width="119dp"
         android:layout_height="42dp"
-        android:layout_marginTop="44dp"
         android:background="@drawable/custom_button"
         android:text="Search"
         android:textColor="#FFFFFF"
@@ -68,10 +67,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDestination"
-        app:layout_constraintVertical_bias="0.005"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate2"
+        app:layout_constraintVertical_bias="0.211"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -88,4 +87,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewDate1"
+        android:layout_width="211dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:text="Select first date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDestination" />
+
+    <TextView
+        android:id="@+id/textViewDate2"
+        android:layout_width="211dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:text="Select first date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

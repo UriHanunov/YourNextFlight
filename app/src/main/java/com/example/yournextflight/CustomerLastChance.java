@@ -119,14 +119,17 @@ public class CustomerLastChance extends AppCompatActivity {
 
         DatabaseFlights = FirebaseDatabase.getInstance().getReference("flights");
 
-        listViewFlight.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listViewFlight.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Flight flight = flightList.get(i);
+                Flight flight = flightList.get(position);
 
-                showUpdateDialog(flight.getFlightId(), flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice());
-                return false;
+                Intent intent = new Intent(CustomerLastChance.this, CustomerOrders.class);
+                intent.putExtra("flightId",flight.getFlightId());
+
+                startActivity(intent);
+
             }
         });
 

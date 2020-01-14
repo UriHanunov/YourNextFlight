@@ -29,10 +29,20 @@ public class CustomerResultSearching extends AppCompatActivity {
     List<Flight> flightList;
 
     DatabaseReference DatabaseFlights;
+    String source;
+    String dest;
+    String date1;
+    String date2;
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        Intent  i = getIntent();
+         source = i.getExtras().getString("source");
+         dest = i.getExtras().getString("dest");
+         date1 = i.getExtras().getString("date 1");
+         date2 = i.getExtras().getString("date 2");
 
         DatabaseFlights.addValueEventListener(new ValueEventListener() {
             @Override
@@ -42,14 +52,11 @@ public class CustomerResultSearching extends AppCompatActivity {
 
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     Flight flight= flightSnapshot.getValue(Flight.class);
-                    Intent  i = getIntent();
-                    String source = i.getExtras().getString("source");
-                    String dest = i.getExtras().getString("dest");
-                    String date1 = i.getExtras().getString("date 1");
-                    String date2 = i.getExtras().getString("date 2");
-
+                    Log.e("log", flight.getDestination());
+                    Log.e("log", flight.getSource());
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     String dateInString = flight.getDate();
+
 
                     Date fightDate = null;
                     try {
@@ -77,6 +84,7 @@ public class CustomerResultSearching extends AppCompatActivity {
 
 //                    Log.e("log", dest+" "+flight.getDestination());
                     if(flight.getDestination().equals(dest) && flight.getSource().equals(source) && (fightDate.after(date_1) && fightDate.before(date_2) || fightDate.equals(date_1) || fightDate.equals(date_2))) {
+//                        Log.e("log", flight.getDestination());
                         flightList.add(flight);
                     }
                 }

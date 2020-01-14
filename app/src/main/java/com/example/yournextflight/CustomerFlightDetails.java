@@ -50,12 +50,13 @@ public class CustomerFlightDetails extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot flightSnapshot : dataSnapshot.getChildren()) {
-                    flight = flightSnapshot.getValue(Flight.class);
+                    Flight flightTemp = flightSnapshot.getValue(Flight.class);
                     Intent i = getIntent();
                     ID = i.getExtras().getString("flightId");
-                    Log.e("log", ID);
-                    if (flight.getFlightId().equals(ID)) {
-                        Log.e("log", flight.getDestination());
+//                    Log.e("log", ID);
+                    if (flightTemp.getFlightId().equals(ID)) {
+                        flight = flightSnapshot.getValue(Flight.class);
+//                        Log.e("log", flight.getDestination());
                         from.setText("From: " + flight.getSource());
                         to.setText("To: " + flight.getDestination());
                         date.setText("Date: " + flight.getDate());
@@ -81,8 +82,8 @@ public class CustomerFlightDetails extends AppCompatActivity {
                     Intent i = getIntent();
                     ID = i.getExtras().getString("flightId");
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-                    Log.e("log", ID);
-                    Log.e("log", userId);
+//                    Log.e("log", ID);
+//                    Log.e("log", userId);
                     if (order.getFlightId().equals(ID) && order.getUserId().equals(userId)) {
                          orderID= order.getOrderId();
                     }
@@ -119,9 +120,19 @@ public class CustomerFlightDetails extends AppCompatActivity {
 
     private void cancelFlight() {
 
+//        Log.e("log", "fsklhcd"+ ID);
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("flights").child(ID);
 
+        Log.e("log",Integer.toString(flight.getplaces()));
+
         flight.setplacesPlus();
+
+        Log.e("log",Integer.toString(flight.getplaces()));
+//        Log.e("log", ID);
+//        Log.e("log", ID);
+//        Log.e("log", ID);
+//        Log.e("log", ID);
 
         Flight newFlight = new Flight(ID, flight.getSource(), flight.getDestination(), flight.getTime(), flight.getDate(), flight.getprice(), flight.getplaces());
 
@@ -139,6 +150,9 @@ public class CustomerFlightDetails extends AppCompatActivity {
             }
 
         });
+
+        Intent intent = new Intent(CustomerFlightDetails.this, CustomerMain.class);
+        startActivity(intent);
 
         Toast.makeText(this, "flight canceled, check my flights for more details", Toast.LENGTH_LONG).show();
     }
