@@ -40,6 +40,9 @@ public class CustomerOrders extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        Intent i = getIntent();
+        ID = i.getExtras().getString("flightId");
+
         title = (TextView) findViewById(R.id.textViewflightsDeatils);
         from = (TextView) findViewById(R.id.textViewSource);
         to = (TextView) findViewById(R.id.textViewDest);
@@ -52,19 +55,16 @@ public class CustomerOrders extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot flightSnapshot : dataSnapshot.getChildren()) {
-                    flight = flightSnapshot.getValue(Flight.class);
-                    Intent i = getIntent();
-                    ID = i.getExtras().getString("flightId");
-                    Log.e("log", ID);
-                    if (flight.getFlightId().equals(ID)) {
-                        Log.e("log", flight.getDestination());
+                   Flight flightTemp = flightSnapshot.getValue(Flight.class);
+                    if (flightTemp.getFlightId().equals(ID)) {
+                        flight= flightSnapshot.getValue(Flight.class);
                         from.setText("From: " + flight.getSource());
                         to.setText("To: " + flight.getDestination());
                         date.setText("Date: " + flight.getDate());
                         time.setText("Time: " + flight.getTime());
                         price.setText("Price: " + Integer.toString(flight.getprice()));
-                    }
 
+                    }
                 }
             }
 

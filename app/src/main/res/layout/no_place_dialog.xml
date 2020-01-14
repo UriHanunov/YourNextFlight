@@ -15,5 +15,8 @@
         android:id="@+id/buttonReturn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="return to search" />
+        android:background="@drawable/custom_button"
+        android:text="return to search"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E" />
 </LinearLayout>

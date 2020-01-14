@@ -70,7 +70,7 @@ public class AllFlights extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.update_dialog, null);
 
         dialogBuilder.setView(dialogView);
-        
+
         final AlertDialog alertDialog= dialogBuilder.create();
         alertDialog.show();
 

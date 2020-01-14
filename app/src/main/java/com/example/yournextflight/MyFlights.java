@@ -45,8 +45,8 @@ public class MyFlights extends AppCompatActivity {
                 for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
                     orderFlight order= flightSnapshot.getValue(orderFlight.class);
                     if (order.getUserId().equals( FirebaseAuth.getInstance().getCurrentUser().getUid().toString())){
-                        Log.e("log", order.getFlightId());
                         MyFlights.add(order.getFlightId().toString());
+//                        Log.e("log", order.getFlightId());
                     }
                 }
             }
@@ -58,11 +58,11 @@ public class MyFlights extends AppCompatActivity {
             DatabaseFlights.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                     for( int i=0; i< MyFlights.size(); i++) {
-                        Log.e("log", MyFlights.get(i));
+//                        Log.e("log", MyFlights.get(i));
                     for (DataSnapshot flightSnapshot : dataSnapshot.getChildren()) {
                         Flight flight= flightSnapshot.getValue(Flight.class);
-
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         String dateInString = flight.getDate();
 
@@ -76,9 +76,9 @@ public class MyFlights extends AppCompatActivity {
 
                         Date today = new Date(System.currentTimeMillis());
 
-                        if(flight.getFlightId().equals(MyFlights.get(i)) && fightDate.after(today) || fightDate.equals(today))
-
+                        if(flight.getFlightId().equals(MyFlights.get(i)) && fightDate.after(today)) {
                             flightList.add(flight);
+                        }
                     }
                 }
                     FlightList adapter = new FlightList(MyFlights.this, flightList);

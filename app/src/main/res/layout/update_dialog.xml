@@ -21,6 +21,9 @@
 
     <Button
         android:id="@+id/buttonUpdate"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/common_google_play_services_update_button" />
