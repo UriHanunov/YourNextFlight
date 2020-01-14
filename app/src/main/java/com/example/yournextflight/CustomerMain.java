@@ -1,5 +1,6 @@
 package com.example.yournextflight;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -16,8 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -27,7 +32,8 @@ public class CustomerMain extends AppCompatActivity {
     private TextView hello;
     private TextView name;
     private TextView search;
-    private EditText source;
+    private TextView source;
+    String userName;
     private EditText dest;
     private Button myFlights;
     private Button lastChance;
@@ -40,6 +46,29 @@ public class CustomerMain extends AppCompatActivity {
     String date2;
 
     DatabaseReference DatabaseFlights;
+    DatabaseReference DatabaseUsers;
+
+    protected void onStart() {
+        super.onStart();
+
+        DatabaseUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot flightSnapshot : dataSnapshot.getChildren()){
+                    User user= flightSnapshot.getValue(User.class);
+                    if(user.getUserId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid().toString()))
+                        name.setText("Hello  "+ user.getFirstName());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +138,7 @@ public class CustomerMain extends AppCompatActivity {
 
 
         DatabaseFlights = FirebaseDatabase.getInstance().getReference("flights");
+        DatabaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         hello = (TextView) findViewById(R.id.textViewHello); //hello
         name = (TextView) findViewById(R.id.textViewName); //save the name
         myFlights = (Button) findViewById(R.id.buttonMyFlights);
@@ -116,8 +146,10 @@ public class CustomerMain extends AppCompatActivity {
         search = (TextView) findViewById(R.id.textViewSerach);
         source = (EditText) findViewById(R.id.editTextSorce2);
         dest = (EditText) findViewById(R.id.editTextDest2);
+        name = (TextView) findViewById(R.id.textViewName);
         searchAll = (Button) findViewById(R.id.buttonSearchAll);
 
+//        name.setText("Hello  "+ userName);
 
         myFlights.setOnClickListener(new View.OnClickListener() {
             @Override
