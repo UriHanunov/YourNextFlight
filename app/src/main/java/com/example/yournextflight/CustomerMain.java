@@ -32,6 +32,7 @@ public class CustomerMain extends AppCompatActivity {
     private Button myFlights;
     private Button lastChance;
     private Button searchAll;
+    private Button contact;
     private TextView mDisplayDate1;
     private TextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -117,6 +118,7 @@ public class CustomerMain extends AppCompatActivity {
         source = (EditText) findViewById(R.id.editTextSorce2);
         dest = (EditText) findViewById(R.id.editTextDest2);
         searchAll = (Button) findViewById(R.id.buttonSearchAll);
+        contact = (Button) findViewById(R.id.buttonContact);
 
 
         myFlights.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +153,16 @@ public class CustomerMain extends AppCompatActivity {
                 searchFlights();
             }
         });
+
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerMain.this, Contact.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void searchFlights() {
         String so = source.getText().toString().trim();
