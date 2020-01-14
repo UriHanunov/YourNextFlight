@@ -2,11 +2,16 @@ package com.example.yournextflight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +34,8 @@ import java.util.Calendar;
 
 public class CustomerMain extends AppCompatActivity {
     private static final String TAG = "CustomerMain";
+    private static final int REQUEST_CALL = 1;
+    private static final String NUMBER_CALL = "0526839535";
 
     private TextView hello;
     private TextView name;
@@ -38,7 +46,7 @@ public class CustomerMain extends AppCompatActivity {
     private Button myFlights;
     private Button lastChance;
     private Button searchAll;
-    private Button contact;
+    private ImageButton imageCall;
     private TextView mDisplayDate1;
     private TextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -149,9 +157,7 @@ public class CustomerMain extends AppCompatActivity {
         dest = (EditText) findViewById(R.id.editTextDest2);
         name = (TextView) findViewById(R.id.textViewName);
         searchAll = (Button) findViewById(R.id.buttonSearchAll);
-        contact = (Button) findViewById(R.id.buttonContact);
-
-//        name.setText("Hello  "+ userName);
+        imageCall = (ImageButton) findViewById(R.id.imageButtonIc_Phone);
 
         myFlights.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,13 +192,43 @@ public class CustomerMain extends AppCompatActivity {
             }
         });
 
-        contact.setOnClickListener(new View.OnClickListener() {
+        imageCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CustomerMain.this, Contact.class);
-                startActivity(intent);
+                makePhoneCall();
             }
         });
+    }
+
+    private void makePhoneCall()
+    {
+
+        if(ContextCompat.checkSelfPermission(CustomerMain.this,
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(CustomerMain.this,
+                    new String[] {Manifest.permission.CALL_PHONE} , REQUEST_CALL );
+        }
+        else
+        {
+            String dial = "tel:" + NUMBER_CALL;
+            startActivity(new Intent(Intent.ACTION_CALL , Uri.parse(dial)));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_CALL)
+        {
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                makePhoneCall();
+            }
+        }
+        else
+        {
+            Toast.makeText(this,"Permission DENIED", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

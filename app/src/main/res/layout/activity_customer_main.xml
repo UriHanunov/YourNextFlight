@@ -83,7 +83,7 @@
         android:id="@+id/textViewDate1"
         android:layout_width="211dp"
         android:layout_height="42dp"
-        android:text="Select first date"
+        android:text="From"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
@@ -95,7 +95,7 @@
         android:id="@+id/textViewDate2"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:text="Select second date"
+        android:text="To"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.124"
@@ -132,16 +132,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewDate2"
         app:layout_constraintVertical_bias="0.408" />
 
-    <Button
-        android:id="@+id/buttonContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="contact"
+    <ImageButton
+        android:id="@+id/imageButtonIc_Phone"
+        android:layout_width="96dp"
+        android:layout_height="44dp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSearchAll"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate2"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.423"
+        app:srcCompat="@drawable/ic_phone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
