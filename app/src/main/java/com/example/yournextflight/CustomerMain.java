@@ -51,6 +51,7 @@ public class CustomerMain extends AppCompatActivity {
     private TextView mDisplayDate2;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private DatePickerDialog.OnDateSetListener mDateSetListener2;
+    private Button logout;
     String date;
     String date2;
 
@@ -158,11 +159,20 @@ public class CustomerMain extends AppCompatActivity {
         name = (TextView) findViewById(R.id.textViewName);
         searchAll = (Button) findViewById(R.id.buttonSearchAll);
         imageCall = (ImageButton) findViewById(R.id.imageButtonIc_Phone);
+        logout = (Button) findViewById(R.id.buttonLogout);
 
         myFlights.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerMain.this, CustomerMyFlights.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerMain.this, MainActivity.class);
                 startActivity(intent);
             }
         });

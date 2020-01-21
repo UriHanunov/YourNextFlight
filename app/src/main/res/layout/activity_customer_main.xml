@@ -148,4 +148,19 @@
         app:layout_constraintVertical_bias="0.423"
         app:srcCompat="@drawable/ic_phone" />
 
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLastChance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
