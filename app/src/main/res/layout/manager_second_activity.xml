@@ -109,4 +109,20 @@
         app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate1" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:text="Logout"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A2E1E"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddFlight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

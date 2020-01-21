@@ -24,6 +24,7 @@ public class Manager_second_Activity extends AppCompatActivity {
     private Button allFlights;
     private EditText Destination;
     private Button search;
+    private Button logout;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private DatePickerDialog.OnDateSetListener mDateSetListener2;
     private TextView mDisplayDate1;
@@ -40,6 +41,7 @@ public class Manager_second_Activity extends AppCompatActivity {
         addFlight = (Button)findViewById(R.id.buttonAddFlight);
         allFlights = (Button)findViewById(R.id.buttonAllFlights);
         search = (Button)findViewById(R.id.buttonSearch);
+        logout = (Button)findViewById(R.id.buttonLogout);
         Destination = (EditText) findViewById(R.id.editTextDestination);
 
         mDisplayDate1 = (TextView) findViewById(R.id.textViewDate1);
@@ -110,6 +112,16 @@ public class Manager_second_Activity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(Manager_second_Activity.this, AddFlight.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() //go to manager activity
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(Manager_second_Activity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
